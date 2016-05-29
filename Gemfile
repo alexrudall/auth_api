@@ -15,6 +15,9 @@ gem 'puma', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 # Ruby implementation of the RFC 7519 OAuth JSON Web Token standard
 gem 'jwt'
+# Simple, standardized way to build and use Service Objects (aka Commands)
+gem 'simple_command'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
