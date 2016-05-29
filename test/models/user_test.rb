@@ -24,7 +24,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "should allow a password change" do
     assert @user.update_attributes(password: 'new_password')
-    assert @user.authenticate("new_password")
+    assert @user.authenticate('new_password')
   end
 
   test "should not allow a short password" do
