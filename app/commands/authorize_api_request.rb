@@ -19,15 +19,24 @@ class AuthorizeApiRequest
   end
 
   def decoded_auth_token
-    @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
+    @decoded_auth_token ||= capped_token(JsonWebToken.decode(http_auth_header))
   end
 
   def http_auth_header
-    if headers['Authorization'].present?
-      return headers['Authorization'].split(' ').last
+    if headers[:authorization].present?
+      return headers[:authorization].split(' ').last
     else
       errors.add(:token, 'Missing token')
     end
     nil
   end
+
+  def capped_token(decoded_token)
+    if decoded_token.nil? || Time.at(decoded_token[:exp]) < 1.hour.from_now
+      nil
+    else
+      decoded_token
+    end
+  end
+
 end
