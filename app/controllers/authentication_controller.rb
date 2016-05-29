@@ -10,4 +10,15 @@ class AuthenticationController < ApplicationController
       render json: { error: command.errors }, status: :unauthorized
     end
   end
+
+  def refresh_token
+    command = RefreshToken.call(request.headers[:authorization])
+
+    if command.success?
+      render json: { auth_token: command.result }
+    else
+      render json: { error: command.errors }, status: :unauthorized
+    end
+  end
+
 end

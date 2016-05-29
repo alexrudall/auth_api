@@ -20,4 +20,18 @@ class AuthenticationControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
+  test "should refresh token" do
+    @token = AuthenticateUser.call(@user.email, 'password').result
+    post refresh_token_url, headers: { authorization: @token }
+    assert_response :success
+  end
+
+  test "should not refresh token if it's more than 2 hours old" do
+    Timecop.freeze(121.minutes.ago) do
+      @token = AuthenticateUser.call(@user.email, 'password').result
+    end
+    post refresh_token_url, headers: { authorization: @token }
+    assert_response :unauthorized
+  end
+
 end
