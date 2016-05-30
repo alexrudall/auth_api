@@ -17,7 +17,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 # Simple, standardized way to build and use Service Objects (aka Commands)
 gem 'simple_command'
-
+# Convention over configuration for JSON generation
+gem 'active_model_serializers'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
