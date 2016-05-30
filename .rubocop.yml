@@ -1,0 +1,12 @@
+AllCops:
+  Excludes:
+    - bin/**
+    - db/**
+    - config/**
+    - script/**
+
+Documentation:
+  Enabled: false
+
+ClassAndModuleChildren:
+  Enabled: false

@@ -1,5 +1,4 @@
 class GroupPolicy < ApplicationPolicy
-
   def create?
     user.admin?
   end
@@ -11,5 +10,4 @@ class GroupPolicy < ApplicationPolicy
   def destroy?
     user.admin?
   end
-
 end

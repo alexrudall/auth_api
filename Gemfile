@@ -22,16 +22,18 @@ gem 'rack-cors'
 gem 'rack-attack'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere to pause execution with a debugger console
   gem 'byebug', '~> 9.0.5', platform: :mri
 end
 
 group :development do
   # Listens to file changes and notifies you about the changes
   gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background
+  # Keep your application running in the background to speed up development
   gem 'spring', '~> 1.7.1'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Enforce many of the guidelines outlined in the community Ruby Style Guide
+  gem 'rubocop', '~> 0.40.0', require: false
 end
 
 group :test do

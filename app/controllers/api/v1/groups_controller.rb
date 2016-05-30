@@ -42,8 +42,7 @@ module Api::V1
     end
 
     def group_params
-      params.require(:group).permit(:name, :user_ids => [])
+      params.require(:group).permit(:name, user_ids: [])
     end
-
   end
 end

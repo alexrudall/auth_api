@@ -31,6 +31,5 @@ module Api::V1
         render json: { error: command.errors }, status: :unauthorized
       end
     end
-
   end
 end

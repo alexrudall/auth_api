@@ -38,5 +38,4 @@ class AuthorizeApiRequest
       decoded_token
     end
   end
-
 end
