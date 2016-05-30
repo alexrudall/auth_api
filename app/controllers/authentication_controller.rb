@@ -3,22 +3,12 @@ class AuthenticationController < ApplicationController
 
   def authenticate
     command = AuthenticateUser.call(params[:email], params[:password])
-
-    if command.success?
-      render json: { auth_token: command.result }
-    else
-      render json: { error: command.errors }, status: :unauthorized
-    end
+    render_command(command)
   end
 
   def refresh_token
     command = RefreshToken.call(request.headers[:authorization])
-
-    if command.success?
-      render json: { auth_token: command.result }
-    else
-      render json: { error: command.errors }, status: :unauthorized
-    end
+    render_command(command)
   end
 
   def decode_token
@@ -28,6 +18,16 @@ class AuthenticationController < ApplicationController
       render json: UserSerializer.new(user).to_json
     else
       render json: { error: 'Invalid token' }, status: :unauthorized
+    end
+  end
+
+  private
+
+  def render_command(command)
+    if command.success?
+      render json: { auth_token: command.result }
+    else
+      render json: { error: command.errors }, status: :unauthorized
     end
   end
 
