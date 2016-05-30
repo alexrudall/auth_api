@@ -1,6 +1,7 @@
 module Api::V1
   class UsersController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy]
+    before_action :new_user, only: [:create]
 
     def index
       @users = User.all
@@ -12,7 +13,6 @@ module Api::V1
     end
 
     def create
-      @user = User.new(user_params)
       if @user.save
         render json: @user, status: :created, location: v1_user_url(@user)
       else
@@ -36,6 +36,10 @@ module Api::V1
 
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def new_user
+      @user = User.new(user_params)
     end
 
     def user_params

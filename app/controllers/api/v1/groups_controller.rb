@@ -1,6 +1,8 @@
 module Api::V1
   class GroupsController < ApplicationController
     before_action :set_group, only: [:show, :update, :destroy]
+    before_action :new_group, only: [:create]
+    before_action :authorize_group, only: [:create, :update, :destroy]
 
     def index
       @groups = Group.all
@@ -12,8 +14,6 @@ module Api::V1
     end
 
     def create
-      authorize Group
-      @group = Group.new(group_params)
       if @group.save
         render json: @group, status: :created, location: v1_group_url(@group)
       else
@@ -22,7 +22,6 @@ module Api::V1
     end
 
     def update
-      authorize Group
       if @group.update(group_params)
         render json: @group
       else
@@ -31,7 +30,6 @@ module Api::V1
     end
 
     def destroy
-      authorize Group
       @group.destroy
     end
 
@@ -39,6 +37,14 @@ module Api::V1
 
     def set_group
       @group = Group.find(params[:id])
+    end
+
+    def new_group
+      @group = Group.new(group_params)
+    end
+
+    def authorize_group
+      authorize Group
     end
 
     def group_params

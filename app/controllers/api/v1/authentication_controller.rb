@@ -13,8 +13,6 @@ module Api::V1
     end
 
     def decode_token
-      user = AuthorizeApiRequest.call(request.headers).result
-
       if user.present?
         render json: UserSerializer.new(user).to_json
       else
@@ -30,6 +28,10 @@ module Api::V1
       else
         render json: { error: command.errors }, status: :unauthorized
       end
+    end
+
+    def user
+      @user ||= AuthorizeApiRequest.call(request.headers).result
     end
   end
 end
