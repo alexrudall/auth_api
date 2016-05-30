@@ -34,4 +34,19 @@ class AuthenticationControllerTest < ActionDispatch::IntegrationTest
     assert_response :unauthorized
   end
 
+  test "should decode token" do
+    @token = AuthenticateUser.call(@user.email, 'password').result
+    get decode_token_url, headers: { authorization: @token }
+    assert_response :success
+    assert JSON.parse(response.body)["id"] == @user.id
+  end
+
+  test "should not decode token if it's more than 1 hour old" do
+    Timecop.freeze(61.minutes.ago) do
+      @token = AuthenticateUser.call(@user.email, 'password').result
+    end
+    get decode_token_url, headers: { authorization: @token }
+    assert_response :unauthorized
+  end
+
 end

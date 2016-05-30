@@ -18,7 +18,7 @@ class RefreshToken
     user = User.find(id) if id
     return user if user
 
-    errors.add :user_authentication, 'invalid credentials'
+    errors.add :refresh_token, 'invalid credentials'
     nil
   end
 end

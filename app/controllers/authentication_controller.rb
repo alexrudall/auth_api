@@ -21,4 +21,14 @@ class AuthenticationController < ApplicationController
     end
   end
 
+  def decode_token
+    user = AuthorizeApiRequest.call(request.headers).result
+
+    if user.present?
+      render json: user
+    else
+      render json: { error: 'Invalid token' }, status: :unauthorized
+    end
+  end
+
 end
