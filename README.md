@@ -26,7 +26,7 @@ I tried to demonstrate some best practices as I went on - TDD was used approxima
 
 I general, I believe the requirements have been met to a good standard.
 
-### Future improvements:
+### Future improvements
 
 There is a lot that could be improved in the application as it stands, to wit:
 
@@ -40,7 +40,7 @@ There is a lot that could be improved in the application as it stands, to wit:
 * Build a toy front-end in React to play with
 * Set up Docker and deploy to Heroku
 
-### Assumptions:
+### Assumptions
 
 I made some assumptions:
 
