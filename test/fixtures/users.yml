@@ -9,3 +9,9 @@ no_password:
   username: no_password
   email: no_password@example.com
   password_digest:
+
+admin:
+  username: admin
+  email: admin@example.com
+  password_digest: <%= BCrypt::Password.create("password", cost: 4) %>
+  admin: true

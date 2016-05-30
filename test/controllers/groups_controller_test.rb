@@ -3,7 +3,7 @@ require 'test_helper'
 class GroupsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @group = groups(:one)
-    @user = users(:valid)
+    @user = users(:admin)
     @token = AuthenticateUser.call(@user.email, 'password').result
   end
 

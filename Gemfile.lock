@@ -71,6 +71,8 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     puma (3.4.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.0.rc1)
       json
     rack-test (0.6.3)
@@ -137,6 +139,7 @@ DEPENDENCIES
   jwt
   listen (~> 3.0.5)
   puma (~> 3.0)
+  pundit
   rails (>= 5.0.0.rc1, < 5.1)
   simple_command
   spring

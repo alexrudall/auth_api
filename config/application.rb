@@ -29,5 +29,6 @@ module AuthApi
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app/commands')
     config.autoload_paths << Rails.root.join('app/serializers')
+    config.autoload_paths << Rails.root.join('app/policies')
   end
 end

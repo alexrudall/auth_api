@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
 
   # POST /groups
   def create
+    authorize Group
     @group = Group.new(group_params)
 
     if @group.save
@@ -26,6 +27,7 @@ class GroupsController < ApplicationController
 
   # PATCH/PUT /groups/1
   def update
+    authorize Group
     if @group.update(group_params)
       render json: @group
     else
@@ -35,6 +37,7 @@ class GroupsController < ApplicationController
 
   # DELETE /groups/1
   def destroy
+    authorize Group
     @group.destroy
   end
 
