@@ -133,19 +133,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers (~> 0.10.0)
   bcrypt (~> 3.1.7)
-  byebug
-  jwt
+  byebug (~> 9.0.5)
+  jwt (~> 1.5.4)
   listen (~> 3.0.5)
   puma (~> 3.0)
-  pundit
+  pundit (~> 1.1.0)
   rails (>= 5.0.0.rc1, < 5.1)
-  simple_command
-  spring
+  simple_command (~> 0.0.9)
+  spring (~> 1.7.1)
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
-  timecop
+  sqlite3 (~> 1.3.11)
+  timecop (~> 0.8.1)
 
 BUNDLED WITH
    1.12.5
