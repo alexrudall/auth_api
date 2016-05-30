@@ -25,7 +25,7 @@ class AuthenticationController < ApplicationController
     user = AuthorizeApiRequest.call(request.headers).result
 
     if user.present?
-      render json: user
+      render json: UserSerializer.new(user).to_json
     else
       render json: { error: 'Invalid token' }, status: :unauthorized
     end

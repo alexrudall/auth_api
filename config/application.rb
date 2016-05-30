@@ -28,5 +28,6 @@ module AuthApi
     config.api_only = true
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app/commands')
+    config.autoload_paths << Rails.root.join('app/serializers')
   end
 end
