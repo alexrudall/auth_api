@@ -11,10 +11,10 @@ class RefreshToken
 
   private
 
-  attr_accessor :email, :password
+  attr_accessor :token
 
   def user
-    id = JsonWebToken.decode(@token)[:user_id] if JsonWebToken.decode(@token)
+    id = JsonWebToken.decode(@token)[:user_id] if JsonWebToken.decode(token)
     user = User.find(id) if id
     return user if user
 
