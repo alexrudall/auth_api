@@ -14,7 +14,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create group" do
     assert_difference('Group.count') do
-      post groups_url, params: { group: { name: @group.name } }, headers: { authorization: @token }
+      post groups_url, params: { group: { name: 'New Group' } }, headers: { authorization: @token }
     end
 
     assert_response 201
@@ -26,7 +26,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update group" do
-    patch group_url(@group), params: { group: { name: @group.name } }, headers: { authorization: @token }
+    patch group_url(@group), params: { group: { name: 'New Name :)' } }, headers: { authorization: @token }
     assert_response 200
   end
 
