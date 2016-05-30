@@ -18,6 +18,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'pundit', '~> 1.1.0'
 # Handle Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+# Rack middleware for blocking & throttling abusive requests
+gem 'rack-attack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
