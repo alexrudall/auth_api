@@ -8,13 +8,13 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get groups_url, headers: { authorization: @token }
+    get v1_groups_url, headers: { authorization: @token }
     assert_response :success
   end
 
   test "should create group" do
     assert_difference('Group.count') do
-      post groups_url,
+      post v1_groups_url,
         params: { group: { name: 'New Group' } },
         headers: { authorization: @token }
     end
@@ -23,12 +23,12 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show group" do
-    get group_url(@group), headers: { authorization: @token }
+    get v1_group_url(@group), headers: { authorization: @token }
     assert_response :success
   end
 
   test "should update group" do
-    patch group_url(@group),
+    patch v1_group_url(@group),
       params: { group: { name: 'New Name :)', user_ids: [users(:valid).id] } },
       headers: { authorization: @token }
     assert @group.users.present?
@@ -37,7 +37,7 @@ class GroupsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy group" do
     assert_difference('Group.count', -1) do
-      delete group_url(@group), headers: { authorization: @token }
+      delete v1_group_url(@group), headers: { authorization: @token }
     end
 
     assert_response 204
